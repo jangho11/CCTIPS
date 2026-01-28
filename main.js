@@ -1,211 +1,165 @@
-
-const cardData = [
+// --- Data for Articles ---
+const articles = [
     {
-        name: 'Chase Sapphire Preferred',
-        issuer: 'Chase',
-        benefits: ['travel', 'points'],
-        details: {
-            points: '2x points on travel and dining',
-            travel: 'Trip cancellation insurance',
-        },
+        title: '5 Tips for More Engaging Thumbnails',
+        snippet: 'Discover the secrets to creating thumbnails that grab attention and increase your click-through rate.',
+        image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        link: '#'
     },
     {
-        name: 'Blue Cash Preferred',
-        issuer: 'American Express',
-        benefits: ['cashback'],
-        details: {
-            cashback: '6% cash back at U.S. supermarkets',
-        },
+        title: 'The Secret to a Viral Video',
+        snippet: 'What do viral videos have in common? We break down the key ingredients for creating shareable content.',
+        image: 'https://images.unsplash.com/photo-1611605698335-8b1569810432?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        link: '#'
     },
     {
-        name: 'Capital One Venture Rewards',
-        issuer: 'Capital One',
-        benefits: ['travel', 'points'],
-        details: {
-            points: '2x miles on every purchase',
-            travel: 'Global Entry or TSA PreCheck credit',
-        },
+        title: 'Mastering SEO for Your Blog',
+        snippet: 'Climb the search rankings with these essential SEO strategies for bloggers and content creators in 2024.',
+        image: 'https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        link: '#'
     },
     {
-        name: 'Chase Freedom Flex',
-        issuer: 'Chase',
-        benefits: ['cashback', 'points'],
-        details: {
-            cashback: '5% cash back on rotating categories',
-            points: '5x points on travel purchased through Chase Ultimate Rewards',
-        },
+        title: 'How to Build a Content Calendar',
+        snippet: 'Stay organized and consistent with a content calendar that works for you. Here’s how to build one from scratch.',
+        image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        link: '#'
     },
     {
-        name: 'Amex Gold Card',
-        issuer: 'American Express',
-        benefits: ['points', 'travel'],
-        details: {
-            points: '4x points on dining and at U.S. supermarkets',
-            travel: '$120 dining credit',
-        },
+        title: 'Top 5 Monetization Strategies',
+        snippet: 'Explore different ways to monetize your content, from ads and sponsorships to digital products.',
+        image: 'https://images.unsplash.com/photo-1583521214693-7de57a4c4436?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        link: '#'
     },
     {
-        name: 'Citi Double Cash Card',
-        issuer: 'Citi',
-        benefits: ['cashback'],
-        details: {
-            cashback: '2% cash back on all purchases (1% when you buy, 1% as you pay)',
-        },
-    },
-    {
-        name: 'Discover it Cash Back',
-        issuer: 'Discover',
-        benefits: ['cashback'],
-        details: {
-            cashback: '5% cash back on rotating categories',
-        },
-    },
-    {
-        name: 'Bank of America Customized Cash Rewards',
-        issuer: 'Bank of America',
-        benefits: ['cashback'],
-        details: {
-            cashback: '3% cash back in the category of your choice',
-        },
-    },
-    {
-        name: 'Wells Fargo Active Cash Card',
-        issuer: 'Wells Fargo',
-        benefits: ['cashback'],
-        details: {
-            cashback: '2% cash rewards on purchases',
-        },
-    },
-    {
-        name: 'U.S. Bank Altitude Go Visa Signature Card',
-        issuer: 'U.S. Bank',
-        benefits: ['points'],
-        details: {
-            points: '4x points on dining, takeout, and restaurant delivery',
-        },
-    },
-    {
-        name: 'Chase Sapphire Reserve',
-        issuer: 'Chase',
-        benefits: ['travel', 'points'],
-        details: {
-            points: '3x points on travel and dining',
-            travel: '$300 annual travel credit',
-        },
-    },
-    {
-        name: 'The Platinum Card from American Express',
-        issuer: 'American Express',
-        benefits: ['travel', 'points'],
-        details: {
-            points: '5x points on flights booked directly with airlines or with American Express Travel',
-            travel: 'Access to the Global Lounge Collection',
-        },
-    },
-    {
-        name: 'Capital One SavorOne Cash Rewards',
-        issuer: 'Capital One',
-        benefits: ['cashback'],
-        details: {
-            cashback: '3% cash back on dining, entertainment, and popular streaming services',
-        },
-    },
-    {
-        name: 'Citi Premier Card',
-        issuer: 'Citi',
-        benefits: ['points', 'travel'],
-        details: {
-            points: '3x points on restaurants, supermarkets, gas stations, air travel, and hotels',
-            travel: '$100 annual hotel savings benefit',
-        },
-    },
-    {
-        name: 'Discover it Miles',
-        issuer: 'Discover',
-        benefits: ['travel', 'points'],
-        details: {
-            points: '1.5x miles on every dollar spent on all purchases',
-            travel: 'Unlimited mile-for-mile match for all miles earned at the end of your first year',
-        },
+        title: 'Engaging Your Audience on Social Media',
+        snippet: 'Learn how to build a community and keep your followers engaged across different social media platforms.',
+        image: 'https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        link: '#'
     }
 ];
 
-class CreditCard extends HTMLElement {
+// --- Web Component: SiteHeader ---
+class SiteHeader extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.innerHTML = `
+            <style>
+                .header-container {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                .logo {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: var(--primary-color, #2a76c6);
+                }
+                nav a {
+                    margin-left: 1.5rem;
+                    font-weight: 600;
+                    color: var(--text-color, #333);
+                    text-decoration: none;
+                }
+                nav a:hover {
+                    color: var(--accent-color, #ff7f50);
+                }
+            </style>
+            <div class="header-container">
+                <div class="logo">CCTIPS</div>
+                <nav>
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </nav>
+            </div>
+        `;
+    }
+}
+customElements.define('site-header', SiteHeader);
+
+
+// --- Web Component: SiteFooter ---
+class SiteFooter extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.innerHTML = `
+            <style>
+                .footer-container {
+                    font-size: 0.9rem;
+                }
+                .footer-container a {
+                    color: #fff;
+                    margin: 0 0.5rem;
+                    text-decoration: underline;
+                }
+            </style>
+            <div class="footer-container">
+                <p>&copy; ${new Date().getFullYear()} CCTIPS. All rights reserved.</p>
+                <p>
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                </p>
+            </div>
+        `;
+    }
+}
+customElements.define('site-footer', SiteFooter);
+
+
+// --- Web Component: ArticleCard ---
+class ArticleCard extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
     }
 
-    connectedCallback() {
-        const { name, issuer, benefits, details } = this.card;
+    set article(article) {
         this.shadowRoot.innerHTML = `
             <style>
-                :host {
+                .card-link {
+                    text-decoration: none;
+                    color: inherit;
                     display: block;
+                    height: 100%;
                 }
-                h2 {
-                    font-size: 1.2rem;
-                    color: #1877f2;
-                    margin-bottom: 10px;
+                .card-image {
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                }
+                .card-content {
+                    padding: 1rem 1.5rem;
+                }
+                h3 {
+                    margin-bottom: 0.5rem;
+                    font-size: 1.25rem;
                 }
                 p {
-                    margin-bottom: 10px;
-                }
-                ul {
-                    list-style-type: none;
-                    padding-left: 0;
-                }
-                li {
-                    margin-bottom: 5px;
+                    font-size: 0.95rem;
+                    line-height: 1.5;
                 }
             </style>
-            <h2>${name}</h2>
-            <p><strong>Issuer:</strong> ${issuer}</p>
-            <ul>
-                ${benefits.map(benefit => `<li>${details[benefit] || ''}</li>`).join('')}
-            </ul>
+            <a href="${article.link}" class="card-link">
+                <img src="${article.image}" alt="${article.title}" class="card-image">
+                <div class="card-content">
+                    <h3>${article.title}</h3>
+                    <p>${article.snippet}</p>
+                </div>
+            </a>
         `;
     }
 }
+customElements.define('article-card', ArticleCard);
 
-customElements.define('credit-card', CreditCard);
 
-const mainContent = document.getElementById('main-content');
-const issuerContainer = document.getElementById('issuer-container');
-const cardContainer = document.getElementById('card-container');
-const backButton = document.getElementById('back-button');
-
-function showIssuers() {
-    issuerContainer.style.display = 'grid';
-    cardContainer.style.display = 'none';
-    backButton.style.display = 'none';
-
-    const issuers = [...new Set(cardData.map(card => card.issuer))];
-    issuerContainer.innerHTML = '';
-    issuers.forEach(issuer => {
-        const issuerCard = document.createElement('div');
-        issuerCard.className = 'issuer-card';
-        issuerCard.textContent = issuer;
-        issuerCard.addEventListener('click', () => showCards(issuer));
-        issuerContainer.appendChild(issuerCard);
+// --- Initialize Page ---
+document.addEventListener('DOMContentLoaded', () => {
+    const mainContent = document.getElementById('main-content');
+    articles.forEach(articleData => {
+        const card = document.createElement('article-card');
+        card.article = articleData;
+        mainContent.appendChild(card);
     });
-}
-
-function showCards(issuer) {
-    issuerContainer.style.display = 'none';
-    cardContainer.style.display = 'grid';
-    backButton.style.display = 'block';
-
-    cardContainer.innerHTML = '';
-    cardData
-        .filter(card => card.issuer === issuer)
-        .forEach(card => {
-            const cardElement = document.createElement('credit-card');
-            cardElement.card = card;
-            cardContainer.appendChild(cardElement);
-        });
-}
-
-backButton.addEventListener('click', showIssuers);
-
-showIssuers();
+});
