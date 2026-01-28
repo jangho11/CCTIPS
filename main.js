@@ -43,6 +43,8 @@ class SiteHeader extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+    }
+    connectedCallback() {
         this.shadowRoot.innerHTML = `
             <style>
                 .header-container {
@@ -85,6 +87,8 @@ class SiteFooter extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+    }
+    connectedCallback() {
         this.shadowRoot.innerHTML = `
             <style>
                 .footer-container {
@@ -113,9 +117,17 @@ class ArticleCard extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+        this._article = null;
     }
 
-    set article(article) {
+    set article(articleData) {
+        this._article = articleData;
+    }
+
+    connectedCallback() {
+        if (!this.shadowRoot || !this._article) {
+            return;
+        }
         this.shadowRoot.innerHTML = `
             <style>
                 .card-link {
@@ -141,11 +153,11 @@ class ArticleCard extends HTMLElement {
                     line-height: 1.5;
                 }
             </style>
-            <a href="${article.link}" class="card-link">
-                <img src="${article.image}" alt="${article.title}" class="card-image">
+            <a href="${this._article.link}" class="card-link">
+                <img src="${this._article.image}" alt="${this._article.title}" class="card-image">
                 <div class="card-content">
-                    <h3>${article.title}</h3>
-                    <p>${article.snippet}</p>
+                    <h3>${this._article.title}</h3>
+                    <p>${this._article.snippet}</p>
                 </div>
             </a>
         `;
